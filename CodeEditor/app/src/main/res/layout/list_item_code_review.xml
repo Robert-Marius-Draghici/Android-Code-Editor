@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="suggestion"
+            type="com.example.codeeditor.domain.CodeReviewSuggestionModel" />
+        <variable
+            name="clickListener"
+            type="com.example.codeeditor.ui.CodeReviewSuggestionListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{() -> clickListener.onClick(suggestion)}"
+        >
+
+        <ImageView
+            android:id="@+id/severity_image"
+            android:layout_width="@dimen/icon_size"
+            android:layout_height="60dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="@id/suggestionMessage"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/line_of_code"
+            app:severityImage="@{suggestion}"
+            tools:srcCompat="@drawable/red" />
+
+        <TextView
+            android:id="@+id/line_of_code"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/severity_image"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lineCode="@{suggestion}"
+            tools:text="  scanf(&quot;%s&quot;), surname);" />
+
+        <TextView
+            android:id="@+id/suggestionMessage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/line_of_code"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/line_of_code"
+            app:layout_constraintTop_toBottomOf="@+id/line_of_code"
+            app:suggestionMessage="@{suggestion}"
+            tools:text="Using &quot;%s&quot; to read a word into a buffer is highly discouraged. There will always be a word that is longer than the provided buffer, which will result in a severe buffer overflow vulnerability." />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

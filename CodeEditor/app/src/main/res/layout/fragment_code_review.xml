@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Wrapping the layout into /layout to make it available with data binding. -->
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="codeReviewViewModel"
+            type="com.example.codeeditor.viewmodels.CodeReviewViewModel" />
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/code_review_page_title"
+        style="@style/Style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_wide"
+        android:layout_marginEnd="@dimen/margin"
+        android:gravity="center"
+        android:text="@string/code_review_page_title"
+        app:layout_constraintBottom_toTopOf="@+id/code_review_link"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/code_review_link"
+        style="@style/Style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_wide"
+        android:layout_marginEnd="@dimen/margin"
+        android:gravity="center"
+        android:autoLink="web"
+        tools:text="https://www.deepcode.ai/app/gh/Robert-Marius-Draghici/DEEPCODE_PRIVATE_BUNDLE/496bd7c8283c0a0c2a67c64835fc99594b1a4bab811c748deecc7b4cde01dadd/_/%2F/code/?"
+        app:layout_constraintBottom_toTopOf="@+id/code_review_list"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/code_review_page_title"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/code_review_list"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/code_review_link"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

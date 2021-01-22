@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">CodeEditor</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="compile_button_text">Compile</string>
+    <string name="code_review_button_text">Code review</string>
+    <string name="dropdown_message">Select a programming language:</string>
+    <string name="save_to_file">Save to file</string>
+    <string name="open_file">Open file</string>
+    <string name="input_message">Input</string>
+    <string name="output_message">Output</string>
+    <string name="clear_button_text">Clear</string>
+    <string name="deepcode_login_message">In order to use the code review functionality, you need to login to the API using the browser. After finishing the login, return to the application.</string>
+    <string name="deepcode_login_button_message">Login</string>
+    <string name="deepcode_cancel_button">Cancel</string>
+    <string name="code_review_page_title">You can also view the results of the analysis at the link below:</string>
+    <string name="suggestionPromptMessage">Suggestion</string>
+    <string name="severityPromptMessage">Severity</string>
+    <string name="categoryPromptMessage">Categories</string>
+    <string name="exampleCommitFixesTitle">Here are some example commit fixes:</string>
+</resources>

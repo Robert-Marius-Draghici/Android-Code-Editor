@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/codeEditorFragment">
+
+    <fragment
+        android:id="@+id/codeEditorFragment"
+        android:name="com.example.codeeditor.ui.CodeEditorFragment"
+        android:label="fragment_code_editor"
+        tools:layout="@layout/fragment_code_editor" >
+        <action
+            android:id="@+id/action_codeEditorFragment_to_codeReviewFragment"
+            app:destination="@id/codeReviewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/codeReviewFragment"
+        android:name="com.example.codeeditor.ui.CodeReviewFragment"
+        android:label="CodeReviewFragment"
+        tools:layout="@layout/fragment_code_review" >
+        <argument
+            android:name="codeReviewAnalysis"
+            app:argType="com.example.codeeditor.domain.CodeReviewAnalysis"
+            />
+        <action
+            android:id="@+id/action_codeReviewFragment_to_codeReviewSuggestionDetailFragment"
+            app:destination="@id/codeReviewSuggestionDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/codeReviewSuggestionDetailFragment"
+        android:name="com.example.codeeditor.ui.CodeReviewSuggestionDetailFragment"
+        android:label="CodeReviewSuggestionDetailFragment" >
+        <argument
+            android:name="suggestionKey"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_codeReviewSuggestionDetailFragment_to_codeReviewFragment"
+            app:destination="@id/codeReviewFragment" />
+    </fragment>
+</navigation>

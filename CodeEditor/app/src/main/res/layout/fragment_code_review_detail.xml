@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.codeeditor.viewmodels.CodeReviewSuggestionDetailViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/code"
+            style="@style/Style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_wide"
+            android:layout_marginEnd="@dimen/margin"
+            android:gravity="center"
+            android:text="@{viewModel.suggestion.code}"
+            android:textIsSelectable="true"
+            app:layout_constraintBottom_toTopOf="@+id/scrollViewSuggestion"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="  scanf(&quot;%s&quot;), surname);" />
+
+        <TextView
+            android:id="@+id/suggestionPrompt"
+            style="@style/Style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/layout_padding"
+            android:layout_marginStart="@dimen/margin_wide"
+            android:layout_marginEnd="@dimen/margin"
+            android:text="@string/suggestionPromptMessage"
+            app:layout_constraintBottom_toTopOf="@+id/severityPrompt"
+            app:layout_constraintEnd_toStartOf="@+id/scrollViewSuggestion"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/code" />
+
+        <ScrollView
+            android:id="@+id/scrollViewSuggestion"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_margin="@dimen/layout_padding"
+            android:background="@drawable/boundary"
+            app:layout_constraintBottom_toTopOf="@+id/severity"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/suggestionPrompt"
+            app:layout_constraintTop_toBottomOf="@+id/code"
+            app:layout_constraintVertical_bias="1.0">
+
+            <TextView
+                android:id="@+id/suggestion"
+                style="@style/Style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/code_editor_padding"
+                android:paddingTop="@dimen/code_editor_padding"
+                android:paddingEnd="@dimen/code_editor_padding"
+                android:paddingBottom="@dimen/code_editor_padding"
+                android:text="@{viewModel.suggestion.suggestionMessage}"
+                android:textIsSelectable="true"
+                tools:text="Using &quot;%s&quot; to read a word into a buffer is highly discouraged. There will always be a word that is longer than the provided buffer, which will result in a severe buffer overflow vulnerability." />
+        </ScrollView>
+
+        <TextView
+            android:id="@+id/severityPrompt"
+            style="@style/Style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/layout_padding"
+            android:layout_marginStart="@dimen/margin_wide"
+            android:paddingEnd="24dp"
+            android:text="@string/severityPromptMessage"
+            app:layout_constraintBottom_toTopOf="@+id/categoryPrompt"
+            app:layout_constraintEnd_toStartOf="@+id/severity"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/suggestionPrompt" />
+
+        <TextView
+            android:id="@+id/severity"
+            style="@style/Style"
+            android:layout_width="0dp"
+            android:layout_height="24dp"
+            android:layout_margin="@dimen/layout_padding"
+            android:paddingStart="8dp"
+            android:background="@drawable/boundary"
+            android:textIsSelectable="true"
+            app:severityText="@{viewModel.suggestion}"
+            app:layout_constraintBottom_toTopOf="@+id/scrollViewCategories"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/severityPrompt"
+            app:layout_constraintTop_toBottomOf="@+id/scrollViewSuggestion"
+            app:layout_constraintVertical_bias="1.0"
+            tools:text="3" />
+
+        <TextView
+            android:id="@+id/categoryPrompt"
+            style="@style/Style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/layout_padding"
+            android:layout_marginStart="@dimen/margin_wide"
+            android:layout_marginEnd="@dimen/margin"
+            android:text="@string/categoryPromptMessage"
+            app:layout_constraintBottom_toTopOf="@+id/exampleCommitFixesTitle"
+            app:layout_constraintEnd_toStartOf="@+id/scrollViewCategories"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/severityPrompt" />
+
+        <ScrollView
+            android:id="@+id/scrollViewCategories"
+            android:layout_width="0dp"
+            android:layout_height="24dp"
+            android:layout_margin="@dimen/layout_padding"
+            android:background="@drawable/boundary"
+            app:layout_constraintBottom_toTopOf="@+id/exampleCommitFixesTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/categoryPrompt"
+            app:layout_constraintTop_toBottomOf="@+id/severity"
+            app:layout_constraintVertical_bias="1.0">
+
+            <TextView
+                android:id="@+id/categories"
+                style="@style/Style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/code_editor_padding"
+                android:paddingTop="@dimen/code_editor_padding"
+                android:paddingEnd="@dimen/code_editor_padding"
+                android:paddingBottom="@dimen/code_editor_padding"
+                android:text="@{viewModel.suggestion.categories.toString()}"
+                android:textIsSelectable="true"
+                tools:text="Security" />
+        </ScrollView>
+
+        <TextView
+            android:id="@+id/exampleCommitFixesTitle"
+            style="@style/Style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_wide"
+            android:layout_marginEnd="@dimen/margin"
+            android:gravity="center"
+            android:text="@string/exampleCommitFixesTitle"
+            app:layout_constraintBottom_toTopOf="@+id/scrollViewExampleCommitFixes"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/scrollViewCategories" />
+
+        <ScrollView
+            android:id="@+id/scrollViewExampleCommitFixes"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/layout_padding"
+            android:background="@drawable/boundary"
+            android:textIsSelectable="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/exampleCommitFixesTitle"
+            app:layout_constraintVertical_bias="1.0">
+
+            <TextView
+                android:id="@+id/exampleCommitFixes"
+                style="@style/Style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin"
+                android:layout_marginTop="@dimen/margin"
+                android:layout_marginEnd="@dimen/margin"
+                android:textIsSelectable="true"
+                app:exampleCommitFixes="@{viewModel.suggestion}" />
+        </ScrollView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
